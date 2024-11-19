@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Portal</title>
+   <style>/* General Styles */
+    body {
+        font-family: 'Poppins', sans-serif; /* Add this font via Google Fonts */
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f9f9f9;
+    }
+    
+    .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    h2 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    
+    /* Header */
+    .header {
+        background: linear-gradient(90deg, #007bff, #4b79a1);
+        color: #fff;
+        padding: 15px 0;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        height: 20px;
+    
+    }
+    
+    .header .logo {
+        float: left;
+        font-size: 24px;
+        font-weight: bold;
+        margin: 0;
+    }
+    
+    .nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        float: right;
+    }
+    
+    .nav ul li {
+        display: inline;
+        margin: 0 15px;
+    }
+    
+    .nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
+    }
+    
+    .nav ul li a:hover {
+        color: #f0e68c;
+    }
+    
+    /* Hero Section */
+    .hero {
+       
+        color: #fff;
+        text-align: center;
+        padding: 120px 0;
+        box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    .hero h2 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 30px;
+        color: black;
+    }
+    
+    .hero .btn {
+        background: #f0e68c;
+        color: #333;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+    }
+    
+    .hero .btn:hover {
+        background: #ffd700;
+    }
+    
+    /* Section Styles */
+    .section {
+        padding: 60px 0;
+        background-color: #fff;
+        box-shadow: inset 0 -1px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .section:nth-child(even) {
+        background-color: #f8f8f8;
+    }
+    
+    .job-listings {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .job-card {
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        width: 300px;
+        text-align: center;
+        transition: box-shadow 0.3s ease;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .job-card:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .job-card h3 {
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+        color: #007bff;
+    }
+    
+    .job-card .btn {
+        background: #28a745;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .job-card .btn:hover {
+        background: #218838;
+    }
+    
+    /* Form Styles */
+    .form input, .form textarea {
+        width: 100%;
+        padding: 15px;
+        margin: 10px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #f8f8f8;
+        font-size: 1rem;
+    }
+    
+    .form textarea {
+        resize: none;
+    }
+    
+    .form .btn {
+        background: #007bff;
+        color: #fff;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background 0.3s ease;
+    }
+    
+    .form .btn:hover {
+        background: #0056b3;
+    }
+    
+    /* Footer */
+    .footer {
+        background: #333;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 40px;
+        box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .footer p {
+        margin: 0;
+        font-size: 1rem;
+        color: #aaa;
+    }
+    
+    /* Add Animations */
+    .hero h2, .hero p, .hero .btn {
+        animation: fadeIn 1.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        0% { opacity: 0; transform: translateY(20px); }
+        100% { opacity: 1; transform: translateY(0); }
+    }
+    #payment {
+        padding: 50px 0;
+        background-color: #f8f8f8;
+        text-align: center;
+        box-shadow: inset 0 -1px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    #payment h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #007bff;
+    }
+    
+    #payment p {
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 20px;
+    }
+    
+    .payment-details {
+        background: #fff;
+        padding: 20px;
+        margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        text-align: left;
+    }
+    
+    .payment-details h3 {
+        font-size: 1.5rem;
+        color: #333;
+        margin-bottom: 15px;
+    }
+    
+    .payment-form label {
+        font-size: 1rem;
+        color: #333;
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .payment-form select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    
+    .payment-form .btn {
+        background: #28a745;
+        color: #fff;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s ease;
+    }
+    
+    .payment-form .btn:hover {
+        background: #218838;
+    }
+    
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Job Portal</h1>
+            <nav class="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#jobs">Jobs</a></li>
+                    <li><a href="#register">Register</a></li>
+                    <li><a href="#payment">Activation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h2>Find Your Dream Job Today</h2>
+            <p>Explore a variety of job opportunities tailored to your skills and preferences.</p>
+            <a href="#jobs" class="btn">Browse Jobs</a>
+        </div>
+    </section>
+
+   
+
+    <!-- Registration -->
+    <section id="register" class="section">
+        <div class="container">
+            <h2>Register</h2>
+            <form class="form">
+                <input type="text" placeholder="Full Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit" class="btn">Register</button>
+            </form>
+        </div>
+    </section>
+    <section id="payment" class="section">
+        <div class="container">
+            <h2>Complete Your Registration</h2>
+            <p>Your registration is successful! Please pay the activation fee to activate your account.</p>
+            <div class="payment-details">
+                <h3>Activation Fee: Ksh 500</h3>
+                <form class="payment-form" id="mpesaForm">
+                    <label for="phone-number">Enter Phone Number:</label>
+                    <input type="text" id="phone-number" name="phone-number" placeholder="e.g., 254712345678" required>
+                    <button type="submit" class="btn">Pay with M-Pesa</button>
+                </form>
+            </div>
+            <div id="payment-status" class="status"></div>
+        </div>
+    </section>
+    
+
+    <!-- Job Listings -->
+    <section id="jobs" class="section">
+        <div class="container">
+            <h2>Job Listings</h2>
+            <div class="job-listings">
+                <div class="job-card">
+                    <h3>Frontend Developer</h3>
+                    <p>Company: TechWorld</p>
+                    <p>Location: Remote</p>
+                    <button class="btn">Apply Now</button>
+                </div>
+                <div class="job-card">
+                    <h3>Graphic Designer</h3>
+                    <p>Company: CreativeHub</p>
+                    <p>Location: Nairobi</p>
+                    <button class="btn">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form class="form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+        
+            
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Job Portal. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+<link rel="manifest" href="/manifest.json">
+<script>
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+            .register('/service-worker.js')
+            .then(registration => {
+                console.log('Service Worker registered with scope:', registration.scope);
+            })
+            .catch(error => {
+                console.error('Service Worker registration failed:', error);
+            });
+    }
+</script>
+
+</html>
